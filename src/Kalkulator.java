@@ -295,11 +295,12 @@ public class Kalkulator extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtBil1)
-                            .addComponent(txtOps)
-                            .addComponent(txtBil2)
-                            .addComponent(txtSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(txtBil1)
+                                .addComponent(txtOps)
+                                .addComponent(txtBil2)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtHasil, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -331,9 +332,7 @@ public class Kalkulator extends javax.swing.JFrame {
                                     .addComponent(btnPlusMinus, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(btnSamaDengan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtJumlah)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(txtJumlah))
                 .addGap(2, 2, 2)
                 .addComponent(jLabel1)
                 .addContainerGap())
@@ -382,12 +381,6 @@ public class Kalkulator extends javax.swing.JFrame {
         String Empat = btnEmpat.getText();
         txtHasil.setText(txtHasil.getText() + Empat);
     }//GEN-LAST:event_btnEmpatMouseClicked
-
-    private void btnLimaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimaMouseClicked
-        // TODO add your handling code here:
-        String Lima = btnLima.getText();
-        txtHasil.setText(txtHasil.getText() + Lima);
-    }//GEN-LAST:event_btnLimaMouseClicked
 
     private void btnEnamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnamMouseClicked
         // TODO add your handling code here:
@@ -469,8 +462,14 @@ public class Kalkulator extends javax.swing.JFrame {
             txtBil1.setVisible(true);
             txtBil1.setText(txtHasil.getText());
             txtHasil.setText("");
+            txtHasil.requestFocus();
         } else if (txtBil1.getText().equals("Bil1")) {
             JOptionPane.showMessageDialog(null, "Masukkan Bilangan Yang Ke-1 Dahulu");
+            txtHasil.requestFocus();
+        } else if (!txtBil1.getText().equals("Bil1")) {
+            txtOps.setText("+");
+            txtOps.setVisible(true);
+            txtHasil.setText("");
             txtHasil.requestFocus();
         }
     }//GEN-LAST:event_btnTambahMouseClicked
@@ -483,8 +482,14 @@ public class Kalkulator extends javax.swing.JFrame {
             txtBil1.setVisible(true);
             txtBil1.setText(txtHasil.getText());
             txtHasil.setText("");
+            txtHasil.requestFocus();
         } else if (txtBil1.getText().equals("Bil1")) {
             JOptionPane.showMessageDialog(null, "Masukkan Bilangan Yang Ke-1 Dahulu");
+            txtHasil.requestFocus();
+        } else if (!txtBil1.getText().equals("Bil1")) {
+            txtOps.setText("-");
+            txtOps.setVisible(true);
+            txtHasil.setText("");
             txtHasil.requestFocus();
         }
     }//GEN-LAST:event_btnKurangMouseClicked
@@ -497,8 +502,14 @@ public class Kalkulator extends javax.swing.JFrame {
             txtBil1.setVisible(true);
             txtBil1.setText(txtHasil.getText());
             txtHasil.setText("");
+            txtHasil.requestFocus();
         } else if (txtBil1.getText().equals("Bil1")) {
             JOptionPane.showMessageDialog(null, "Masukkan Bilangan Yang Ke-1 Dahulu");
+            txtHasil.requestFocus();
+        } else if (!txtBil1.getText().equals("Bil1")) {
+            txtOps.setText("X");
+            txtOps.setVisible(true);
+            txtHasil.setText("");
             txtHasil.requestFocus();
         }
     }//GEN-LAST:event_btnKaliMouseClicked
@@ -511,8 +522,14 @@ public class Kalkulator extends javax.swing.JFrame {
             txtBil1.setVisible(true);
             txtBil1.setText(txtHasil.getText());
             txtHasil.setText("");
+            txtHasil.requestFocus();
         } else if (txtBil1.getText().equals("Bil1")) {
             JOptionPane.showMessageDialog(null, "Masukkan Bilangan Yang Ke-1 Dahulu");
+            txtHasil.requestFocus();
+        } else if (!txtBil1.getText().equals("Bil1")) {
+            txtOps.setText("/");
+            txtOps.setVisible(true);
+            txtHasil.setText("");
             txtHasil.requestFocus();
         }
     }//GEN-LAST:event_btnBagiMouseClicked
@@ -555,6 +572,12 @@ public class Kalkulator extends javax.swing.JFrame {
             txtHasil.setText("" + Hasil);
         }
     }//GEN-LAST:event_btnSamaDenganMouseClicked
+
+    private void btnLimaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimaMouseClicked
+        // TODO add your handling code here:
+        String Lima = btnLima.getText();
+        txtHasil.setText(txtHasil.getText() + Lima);
+    }//GEN-LAST:event_btnLimaMouseClicked
 
     /**
      * @param args the command line arguments
