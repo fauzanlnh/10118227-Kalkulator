@@ -210,6 +210,8 @@ public class Kalkulator extends javax.swing.JFrame {
 
         txtOps.setText("Ops");
 
+        txtBil2.setText("Bil2");
+
         txtJumlah.setText("Hasil :");
 
         jLabel1.setText("FAUZAN LUKMANUL HAKIM - 10118227 - IF6");
@@ -423,10 +425,31 @@ public class Kalkulator extends javax.swing.JFrame {
         txtBil1.setVisible(false);
         txtOps.setVisible(false);
         txtBil2.setVisible(false);
-        txtBil1.setText("");
-        txtOps.setText("");
-        txtBil2.setText("");
+        txtBil1.setText("Bil1");
+        txtOps.setText("Ops");
+        txtBil2.setText("Bil2");
+
         txtJumlah.setVisible(false);
+        txtHasil.setEditable(true);
+        txtHasil.setEditable(true);
+        btnKosong.setEnabled(true);
+        btnSatu.setEnabled(true);
+        btnDua.setEnabled(true);
+        btnTiga.setEnabled(true);
+        btnEmpat.setEnabled(true);
+        btnLima.setEnabled(true);
+        btnEnam.setEnabled(true);
+        btnTujuh.setEnabled(true);
+        btnDelapan.setEnabled(true);
+        btnSembilan.setEnabled(true);
+        btnKoma.setEnabled(true);
+        btnSamaDengan.setEnabled(true);
+        btnPlusMinus.setEnabled(true);
+        btnKali.setEnabled(true);
+        btnKurang.setEnabled(true);
+        btnTambah.setEnabled(true);
+        btnBagi.setEnabled(true);
+        btnHapus.setEnabled(true);
     }//GEN-LAST:event_btnClearMouseClicked
 
     private void btnPlusMinusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlusMinusMouseClicked
@@ -536,41 +559,142 @@ public class Kalkulator extends javax.swing.JFrame {
 
     private void btnSamaDenganMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSamaDenganMouseClicked
         // TODO add your handling code here:
-        txtBil2.setText(txtHasil.getText());
-        txtBil2.setVisible(true);
-        txtJumlah.setVisible(true);
-        String Ops = txtOps.getText();
-        Double bil1 = Double.valueOf(txtBil1.getText());
-        Double bil2 = Double.valueOf(txtBil2.getText());
-        if (Ops == "+" && txtBil2.getText().charAt(0) == '-') {
-            txtBil2.setText("(" + txtHasil.getText() + ")");
-            Double Hasil = bil1 + bil2;
-            txtHasil.setText("" + Hasil);
-        } else if (Ops == "+") {
-            Double Hasil = bil1 + bil2;
-            txtHasil.setText("" + Hasil);
-        } else if (Ops == "-" && txtBil2.getText().charAt(0) == '-') {
-            txtBil2.setText("(" + txtHasil.getText() + ")");
-            Double Hasil = bil1 - bil2;
-            txtHasil.setText("" + Hasil);
-        } else if (Ops == "-") {
-            Double Hasil = bil1 - bil2;
-            txtHasil.setText("" + Hasil);
-        } else if (Ops == "X" && txtBil2.getText().charAt(0) == '-') {
-            txtBil2.setText("(" + txtHasil.getText() + ")");
-            Double Hasil = bil1 * bil2;
-            txtHasil.setText("" + Hasil);
-        } else if (Ops == "X") {
-            Double Hasil = bil1 * bil2;
-            txtHasil.setText("" + Hasil);
-        } else if (Ops == "/" && txtBil2.getText().charAt(0) == '-') {
-            txtBil2.setText("(" + txtHasil.getText() + ")");
-            Double Hasil = bil1 / bil2;
-            txtHasil.setText("" + Hasil);
-        } else if (Ops == "/") {
-            Double Hasil = bil1 / bil2;
-            txtHasil.setText("" + Hasil);
+        String Ops = null;
+        Double bil1, bil2;
+        if (txtBil1.getText().equals("Bil1") && txtBil2.getText().equals("Bil2") && txtOps.getText().equals("Ops")) {
+            do {
+                if (txtHasil.getText().length() > 0) {
+                    txtHasil.requestFocus();
+                    break;
+                } else if (txtBil1.getText().equals("Bil1")) {
+                    JOptionPane.showMessageDialog(null, "Masukkan Bilangan Yang Ke-1 Dahulu");
+                    txtHasil.requestFocus();
+                    break;
+                }
+            } while (!txtBil2.getText().equals("Bil1"));
+        } else if (!txtBil1.getText().equals("Bil1") && txtBil2.getText().equals("Bil2") && !txtOps.getText().equals("Ops") && txtHasil.getText().isEmpty()) {
+            do {
+                if (txtHasil.getText().length() > 0) {
+                    Ops = txtOps.getText();
+                    txtBil2.setText(txtHasil.getText());
+                    txtBil2.setVisible(true);
+                    break;
+                }
+                JOptionPane.showMessageDialog(null, "Masukkan Bilangan Yang Ke-2");
+                txtHasil.requestFocus();
+            } while (!txtBil2.getText().equals("Bil2"));
+
+            if (!txtBil2.getText().equals("Bil2")) {
+                txtJumlah.setVisible(true);
+                bil1 = Double.valueOf(txtBil1.getText());
+                bil2 = Double.valueOf(txtBil2.getText());
+                if (Ops == "+" && txtBil2.getText().charAt(0) == '-') {
+                    txtBil2.setText("(" + txtHasil.getText() + ")");
+                    Double Hasil = bil1 + bil2;
+                    txtHasil.setText("" + Hasil);
+                } else if (Ops == "+") {
+                    Double Hasil = bil1 + bil2;
+                    txtHasil.setText("" + Hasil);
+                } else if (Ops == "-" && txtBil2.getText().charAt(0) == '-') {
+                    txtBil2.setText("(" + txtHasil.getText() + ")");
+                    Double Hasil = bil1 - bil2;
+                    txtHasil.setText("" + Hasil);
+                } else if (Ops == "-") {
+                    Double Hasil = bil1 - bil2;
+                    txtHasil.setText("" + Hasil);
+                } else if (Ops == "X" && txtBil2.getText().charAt(0) == '-') {
+                    txtBil2.setText("(" + txtHasil.getText() + ")");
+                    Double Hasil = bil1 * bil2;
+                    txtHasil.setText("" + Hasil);
+                } else if (Ops == "X") {
+                    Double Hasil = bil1 * bil2;
+                    txtHasil.setText("" + Hasil);
+                } else if (Ops == "/" && txtBil2.getText().charAt(0) == '-') {
+                    txtBil2.setText("(" + txtHasil.getText() + ")");
+                    Double Hasil = bil1 / bil2;
+                    txtHasil.setText("" + Hasil);
+                } else if (Ops == "/") {
+                    Double Hasil = bil1 / bil2;
+                    txtHasil.setText("" + Hasil);
+                }
+                txtHasil.setEditable(false);
+                btnKosong.setEnabled(false);
+                btnSatu.setEnabled(false);
+                btnDua.setEnabled(false);
+                btnTiga.setEnabled(false);
+                btnEmpat.setEnabled(false);
+                btnLima.setEnabled(false);
+                btnEnam.setEnabled(false);
+                btnTujuh.setEnabled(false);
+                btnDelapan.setEnabled(false);
+                btnSembilan.setEnabled(false);
+                btnKoma.setEnabled(false);
+                btnSamaDengan.setEnabled(false);
+                btnPlusMinus.setEnabled(false);
+                btnKali.setEnabled(false);
+                btnKurang.setEnabled(false);
+                btnTambah.setEnabled(false);
+                btnBagi.setEnabled(false);
+                btnHapus.setEnabled(false);
+            }
+            // if (!txtBil1.getText().equals("Bil1") && txtBil2.getText().equals("Bil2") && !txtOps.getText().equals("Ops"))
+        } else {
+            txtJumlah.setVisible(true);
+            Ops = txtOps.getText();
+            txtBil2.setText(txtHasil.getText());
+            txtBil2.setVisible(true);
+            bil1 = Double.valueOf(txtBil1.getText());
+            bil2 = Double.valueOf(txtBil2.getText());
+            if (Ops == "+" && txtBil2.getText().charAt(0) == '-') {
+                txtBil2.setText("(" + txtHasil.getText() + ")");
+                Double Hasil = bil1 + bil2;
+                txtHasil.setText("" + Hasil);
+            } else if (Ops == "+") {
+                Double Hasil = bil1 + bil2;
+                txtHasil.setText("" + Hasil);
+            } else if (Ops == "-" && txtBil2.getText().charAt(0) == '-') {
+                txtBil2.setText("(" + txtHasil.getText() + ")");
+                Double Hasil = bil1 - bil2;
+                txtHasil.setText("" + Hasil);
+            } else if (Ops == "-") {
+                Double Hasil = bil1 - bil2;
+                txtHasil.setText("" + Hasil);
+            } else if (Ops == "X" && txtBil2.getText().charAt(0) == '-') {
+                txtBil2.setText("(" + txtHasil.getText() + ")");
+                Double Hasil = bil1 * bil2;
+                txtHasil.setText("" + Hasil);
+            } else if (Ops == "X") {
+                Double Hasil = bil1 * bil2;
+                txtHasil.setText("" + Hasil);
+            } else if (Ops == "/" && txtBil2.getText().charAt(0) == '-') {
+                txtBil2.setText("(" + txtHasil.getText() + ")");
+                Double Hasil = bil1 / bil2;
+                txtHasil.setText("" + Hasil);
+            } else if (Ops == "/") {
+                Double Hasil = bil1 / bil2;
+                txtHasil.setText("" + Hasil);
+            }
+            txtHasil.setEditable(false);
+            btnKosong.setEnabled(false);
+            btnSatu.setEnabled(false);
+            btnDua.setEnabled(false);
+            btnTiga.setEnabled(false);
+            btnEmpat.setEnabled(false);
+            btnLima.setEnabled(false);
+            btnEnam.setEnabled(false);
+            btnTujuh.setEnabled(false);
+            btnDelapan.setEnabled(false);
+            btnSembilan.setEnabled(false);
+            btnKoma.setEnabled(false);
+            btnSamaDengan.setEnabled(false);
+            btnPlusMinus.setEnabled(false);
+            btnKali.setEnabled(false);
+            btnKurang.setEnabled(false);
+            btnTambah.setEnabled(false);
+            btnBagi.setEnabled(false);
+            btnHapus.setEnabled(false);
         }
+
     }//GEN-LAST:event_btnSamaDenganMouseClicked
 
     private void btnLimaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimaMouseClicked

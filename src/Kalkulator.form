@@ -354,6 +354,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="txtBil2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Bil2"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="txtSimpan">
     </Component>
